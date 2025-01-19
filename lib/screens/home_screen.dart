@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/models/movie_model.dart';
 import 'package:movieflix/services/api_service.dart';
+import 'package:movieflix/widgets/card_with_title.dart';
 import 'package:movieflix/widgets/popular_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -151,40 +152,7 @@ class HomeScreen extends StatelessWidget {
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         var movie = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
-              width: 150,
-              height: 150,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Image.network(
-                movie.backdropPath,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Flexible(
-              child: SizedBox(
-                width: 150,
-                child: Text(
-                  movie.title,
-                  softWrap: true,
-                  maxLines: 3,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-            )
-          ],
-        );
+        return CardWithTitle(movie: movie);
       },
       separatorBuilder: (context, index) => SizedBox(
         width: 15,
