@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:movieflix/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: AppBarTheme(
-              elevation: 2,
               backgroundColor: Colors.white,
               foregroundColor: Colors.black87,
               titleTextStyle: TextStyle(
