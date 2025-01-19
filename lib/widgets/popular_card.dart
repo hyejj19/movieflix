@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movieflix/screens/detail_screen.dart';
 
 class PopularCard extends StatelessWidget {
   final String backdropPath;
@@ -14,7 +15,15 @@ class PopularCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('눌렸당 ㅋㅋ');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailScreen(
+                id: id,
+                imgUrl: backdropPath,
+                sectionTitle: 'Popular Movies',
+              ),
+            ));
       },
       child: Column(children: [
         Container(

@@ -44,7 +44,10 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(child: makeListWithImg(snapshot))
+                          Expanded(
+                              child: makeListWithImg(
+                            snapshot,
+                          ))
                         ],
                       ),
                     );
@@ -79,7 +82,9 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(child: makeListWithTitleAndImg(snapshot))
+                          Expanded(
+                              child: makeListWithTitleAndImg(
+                                  snapshot, 'Now in Cinemas'))
                         ],
                       ),
                     );
@@ -114,7 +119,11 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Expanded(child: makeListWithTitleAndImg(snapshot))
+                          Expanded(
+                              child: makeListWithTitleAndImg(
+                            snapshot,
+                            'Coming soon',
+                          ))
                         ],
                       ),
                     );
@@ -146,13 +155,16 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  ListView makeListWithTitleAndImg(AsyncSnapshot<List<MovieModel>> snapshot) {
+  ListView makeListWithTitleAndImg(
+    AsyncSnapshot<List<MovieModel>> snapshot,
+    String sectionTitle,
+  ) {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         var movie = snapshot.data![index];
-        return CardWithTitle(movie: movie);
+        return CardWithTitle(movie: movie, sectionTitle: sectionTitle);
       },
       separatorBuilder: (context, index) => SizedBox(
         width: 15,

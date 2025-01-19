@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movieflix/models/movie_model.dart';
+import 'package:movieflix/screens/detail_screen.dart';
 
 class CardWithTitle extends StatelessWidget {
+  final String? sectionTitle;
+
   const CardWithTitle({
     super.key,
     required this.movie,
+    this.sectionTitle,
   });
 
   final MovieModel movie;
@@ -13,7 +17,15 @@ class CardWithTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('눌렸당 ㅋㅋ');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailScreen(
+                id: movie.id,
+                imgUrl: movie.backdropPath,
+                sectionTitle: sectionTitle ?? 'Movie Detail',
+              ),
+            ));
       },
       child: Column(
         children: [
