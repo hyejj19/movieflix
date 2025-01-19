@@ -15,7 +15,6 @@ class ApiService {
     if (response.statusCode == 200) {
       final movies = jsonDecode(response.body)['results'];
       for (var movie in movies) {
-        print(movie);
         popularMovieInstances.add(MovieModel.fromJson(movie));
       }
       return popularMovieInstances;
